@@ -6,4 +6,9 @@ Here's the full explaination:
 
 https://abapgeeks.com/how-to-declare-various-data-types-in-abap/
 
+Elementary Data Types / Predefined Data Types
+Reference Type
+Complex Data Type
+
+
 
