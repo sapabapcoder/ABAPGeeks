@@ -1,3 +1,9 @@
 # ABAP Data Types - ABAPGeeks.com
 
-Welcome to the ABAP Data Types lesson! In this section, we’ll dive into the core of ABAP programming: understanding and using data types effectively. Data types are essential because they define the kind of data your variables can store and control how that data is managed within your programs. We’ll start with the basics, covering elementary data types like characters, integers, and dates, then move to complex data types such as structures and tables. By the end of this lesson, you’ll have a solid grasp of ABAP’s data types, setting a strong foundation for building effective and efficient programs.
+Welcome to the **ABAP Data Types** lesson! In this section, we’ll dive into the core of ABAP programming: understanding and using data types effectively. Data types are essential because they define the kind of data your variables can store and control how that data is managed within your programs. We’ll start with the basics, covering elementary data types like characters, integers, and dates, then move to complex data types such as structures and tables. By the end of this lesson, you’ll have a solid grasp of ABAP’s data types, setting a strong foundation for building effective and efficient programs.
+
+Here's the full explaination:
+
+https://abapgeeks.com/how-to-declare-various-data-types-in-abap/
+
+
