@@ -1,5 +1,23 @@
-# SAP ABAP Tutorial - ABAPGeeks.com
+# ABAP SALV Report Template - ABAPGeeks.com
 
-[ABAPGeeks](https://abapgeeks.com/) is a go-to blog for anyone diving into SAP ABAP programming! It’s packed with easy-to-follow tutorials, hands-on examples, and practical tips, making it perfect for both new and seasoned ABAP developers. Whether you're just learning the basics or digging into advanced topics like reports, SAP HANA, or Fiori, Integration.
+This repository provides a reusable SALV (SAP List Viewer) Report Template for ABAP development. The template simplifies the process of creating interactive, user-friendly SALV reports by providing a structured framework. With this template, developers can focus on business logic while leveraging pre-built functionalities like sorting, filtering, and exporting.
 
-ABAPGeeks breaks everything down into simple steps. The blog keeps things current with SAP updates and gives you the tools you need to code smarter and faster. It’s a friendly, down-to-earth resource for anyone looking to boost their SAP ABAP skills.
+## SALV Report Structure
+
+SALV Template Structure
+This SALV report template is divided into three main includes:
+
+1. ZSALVTEMPL_TOP:
+
+* Contains class definitions for the main SALV report logic and event handlers.
+Defines global methods and attributes.
+
+2. ZSALVTEMPL_F01:
+
+* Implements the methods defined in ZSALVTEMPL_TOP.
+Initializes the SALV report, executes methods, and controls the program flow.
+
+3. ZSALVTEMPL_SCR:
+
+* Contains selection screens, parameter, select-options
+.
