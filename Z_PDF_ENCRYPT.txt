@@ -1,0 +1,99 @@
+report z_pdf_encrypt.
+
+data: lv_param type sxpgcolist-parameters,
+      lv_stat  type btcxpgstat,
+      lv_ex    type btcxpgexit.
+
+data: s_path      type eseftappl,
+      source_file type eseftappl,
+      output_file type eseftappl,
+      own_pw      type eseftappl,
+      usr_pw      type eseftappl.
+
+data: wa_pdf       type rcgrepfile,
+      t_pdf        type table of rcgrepfile,
+      d_binsize    type i,
+      d_binsizeall type i,
+      d_binfile    type xstring.
+* in our shell script file, we have defined 4 parameters as follow:
+* exec "/usr/bin/pdftk" $1 output $2 owner_pw $3 user_pw $4h
+* so we will assign these parameters using below syntax
+* example
+* source_file= /usr/sapdoc/doc/pdffile.pdf
+* output_file = /usr/sapdoc/doc/pdf_128.pdf
+* own_pw = OwnPwd123
+* usr_pw = UsdPwd123
+lv_param = source_file && | | && output_file && | | && own_pw && | | && usr_pw.
+
+*this function will execute the shell script with its parameters,
+*resulting an output encrypted PDF file in your SAP application directory folder
+call function 'SXPG_COMMAND_EXECUTE'
+  exporting
+    commandname                   = 'ZPDFENCRYPT' "your customer external command name (SM69)
+    additional_parameters         = lv_param
+  importing
+    status                        = lv_stat
+    exitcode                      = lv_ex
+  exceptions
+    no_permission                 = 1
+    command_not_found             = 2
+    parameters_too_long           = 3
+    security_risk                 = 4
+    wrong_check_call_interface    = 5
+    program_start_error           = 6
+    program_termination_error     = 7
+    x_error                       = 8
+    parameter_expected            = 9
+    too_many_parameters           = 10
+    illegal_command               = 11
+    wrong_asynchronous_parameters = 12
+    cant_enq_tbtco_entry          = 13
+    jobcount_generation_error     = 14
+    others                        = 15.
+
+* Download Encrypted PDF From SAP Application Server into PDF binary
+* you can use this binary table for email's attachment
+
+refresh t_pdf.
+open dataset output_file for input in binary mode.
+do.
+  clear: wa_pdf, d_binsize.
+  read dataset output_file into wa_pdf length d_binsize.
+  if sy-subrc = 0.
+    d_binsizeall = d_binsizeall + d_binsize.
+    append wa_pdf to t_pdf.
+  else.
+    if d_binsize > 0.
+      d_binsizeall = d_binsizeall + d_binsize.
+      append wa_pdf to t_pdf.
+    endif.
+    exit.
+  endif.
+enddo.
+close dataset output_file.
+
+*create another OS external command in SM69 (for rm)
+*House cleaning work, delete the file.
+call function 'SXPG_COMMAND_EXECUTE'
+  exporting
+    commandname                   = 'ZDELETEFILE'
+    additional_parameters         = output_file
+  importing
+    status                        = lv_stat
+    exitcode                      = lv_ex
+  exceptions
+    no_permission                 = 1
+    command_not_found             = 2
+    parameters_too_long           = 3
+    security_risk                 = 4
+    wrong_check_call_interface    = 5
+    program_start_error           = 6
+    program_termination_error     = 7
+    x_error                       = 8
+    parameter_expected            = 9
+    too_many_parameters           = 10
+    illegal_command               = 11
+    wrong_asynchronous_parameters = 12
+    cant_enq_tbtco_entry          = 13
+    jobcount_generation_error     = 14
+    others                        = 15.
