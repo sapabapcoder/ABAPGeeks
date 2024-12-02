@@ -1,5 +1,13 @@
-# SAP ABAP Tutorial - ABAPGeeks.com
+# How To Encrypt PDF Document using ABAP And PDFTk - ABAPGeeks.com
 
-[ABAPGeeks](https://abapgeeks.com/) is a go-to blog for anyone diving into SAP ABAP programming! It’s packed with easy-to-follow tutorials, hands-on examples, and practical tips, making it perfect for both new and seasoned ABAP developers. Whether you're just learning the basics or digging into advanced topics like reports, SAP HANA, or Fiori, Integration.
+In the digital era, ensuring the security of sensitive data has become a top priority for businesses. SAP systems often handle confidential documents such as invoices, financial reports, contracts, and other critical data in PDF format. Protecting these documents from unauthorized access or tampering is essential. This is where PDF encryption in ABAP plays a crucial role.
 
-ABAPGeeks breaks everything down into simple steps. The blog keeps things current with SAP updates and gives you the tools you need to code smarter and faster. It’s a friendly, down-to-earth resource for anyone looking to boost their SAP ABAP skills.
+Now because there isn't any built-in solution by SAP for pdf encryption, we will be using a  third party tool called [PDFTK Server](https://www.pdflabs.com/tools/pdftk-server/).
+
+## How To Integrate PDFTK with SAP and ABAP? ##
+
+There are several steps you need to do first in order to use it in your ABAP program, as described here on [how to create PDF password in ABAP](https://abapgeeks.com/how-to-encrypt-pdf-with-password-in-abap/).
+
+
+
+
